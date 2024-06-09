@@ -54,6 +54,7 @@ We will set up the ADC component (double click on it):
 * Ch. 0: Single ended, Avg ✓
 * Ch. 1: Single ended, Avg ✓
 * Ch. 2: Single ended, Avg ✓
+
 Press Apply and OK to save the configuration.
 
 You can now connect The analog pins to the ADC and you should have something like this:
@@ -142,8 +143,7 @@ int main(void)
 	ADC_Start();
 
 	for(;;)
-	{
-		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);						
+	{					
 		Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 1);							
 		CyDelay(1);														
 		ADC_StartConvert();												
