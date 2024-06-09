@@ -151,5 +151,6 @@ int main(void)
 		Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 0);							
 	}
 }
+'''
 
 This is it for Part 1.
