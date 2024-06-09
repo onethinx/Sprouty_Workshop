@@ -86,13 +86,15 @@ If you are having dificulty, you can see this link which will show you how to bu
 
 Now that you have your main.c file opened in Visual Studio Code (VSC for short), you can start editing it. Before main, we can create some global variables:
 
-'''c
+```c
 int16_t 		tempAir, tempSoil, valueLight;
+```
 
 In main, after the enable_irq() function, you can start the ADC by writing:
 
-'''c
+```c
 ADC_Start();
+```
 
 What we need to do in the for loop, every time we need to read the measurement:
 1. We need to turn on the power so we can measure the voltages using the ADC. (Having a 1ms delay is good so the pin has time to pull up)
@@ -107,7 +109,7 @@ The temperature conversion from the voltage read from the ADC to the Celsius val
 
 This is how it looks like in code:
 
-'''c
+```c
 Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 1);					
 CyDelay(1);												
 ADC_StartConvert();										
@@ -116,6 +118,7 @@ tempSoil = NTC_table[ (ADC_GetResult16(0) >> 3)];
 tempAir  = NTC_table[ (ADC_GetResult16(1) >> 3)];		
 valueLight = ADC_CountsTo_mVolts(2, ADC_GetResult16(2));
 Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 0);					
+```
 
 If we debug this code, we should get:
 * Soil Temperature in degrees Celsius (1°C resolution)
@@ -124,7 +127,7 @@ If we debug this code, we should get:
 
 This is how your main code will look like:
 
-'''c
+```c
 int16_t 		tempAir, tempSoil, valueLight;
 
 int main(void)
@@ -151,6 +154,6 @@ int main(void)
 		Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 0);							
 	}
 }
-'''
+```
 
 This is it for Part 1.
