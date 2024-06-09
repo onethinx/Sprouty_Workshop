@@ -14,7 +14,7 @@ In your project folder, go in the **Onethinx_Creator.cydsn** folder and double c
 
 From the right pane (Component Catalog, Cypress), navigate to **Analog** -> **ADC** -> **Scanning SAR ADC** and drag it to the work area. Next, navitate to **Ports and Pins** and drag 3 **Analog Pin**s. Lastly, in the same **Ports and Pins** drag 4 **Digital Output Pin**s.
 
-![PsoC Creator Part 1 Setup](img/P1Setup.png)
+![PsoC Creator Part 1 Setup](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/P1Setup.png)
 
 We use 3 Analog input pins:
 * 1 analog pin is used for measuring the voltage of the voltage divider for the **air NTC**.
@@ -29,7 +29,7 @@ We use 4 Digital output pins:
 
 The schematic for the analog part looks like this:
 
-![PsoC Creator Part 1 Analog Setup](img/P1Analog.png)
+![PsoC Creator Part 1 Analog Setup](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/P1Analog.png)
 
 Setup digital output pins (double click on each pin):
 * Name: LED_R, ✓ Digital output, Strong Drive (P12_5)
@@ -63,7 +63,7 @@ You can now connect The analog pins to the ADC and you should have something lik
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
-![PsoC Creator Part 1 Done](img/P1Done.png)
+![PsoC Creator Part 1 Done](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/P1Done.png)
 
 Now that you have the hardware configuration done, we just need to connect these pins, to the actual pins of the microcontroller. You do that by double clicking on the **Pins** on the left pane "Workspace Explorer". There you can set the:
 * LED_R     = P12_5
@@ -74,7 +74,7 @@ Now that you have the hardware configuration done, we just need to connect these
 * NTC_SOIL  = P10_0
 * LSENS     = P10_2
 
-![Part 1 Pins](img/P1Pins.png)
+![Part 1 Pins](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/P1Pins.png)
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
