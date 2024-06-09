@@ -98,6 +98,13 @@ After sending the data, we place the module in sleep by calling LoRaWAN_Sleep (g
 LoRaWAN_Sleep(&sleepConfig);
 ```
 
+Also, in order to have an idea when code is being executed and when it is sleeping, we can turn on the Green LED on before checking the ADC and turn it off after we finish counting.
+
+```
+Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0); // Turn on the Green LED
+Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1); // Turn off the Green LED
+```
+
 You can now **build** and **launch** your code.
 
 In the end, your code should look something like this:
@@ -167,6 +174,8 @@ int main(void)
 
 	for(;;)
 	{
+        Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);
+
 		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);				
 		Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 1);					
 		CyDelay(1);												
@@ -192,6 +201,7 @@ int main(void)
 		data[3] = (uint8_t)(valueLight/20);						
 		
 		LoRaWAN_Send(&data, 4, M4_WaitDeepSleep);			
+        Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1);
 		LoRaWAN_Sleep(&sleepConfig);							
 	}
 }
