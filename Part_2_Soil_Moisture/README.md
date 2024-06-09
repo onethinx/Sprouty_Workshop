@@ -1,6 +1,6 @@
 # Onethinx Sprouty Workshop
 
-## Part 1: Soil Moisture.
+## Part 2: Soil Moisture.
 
 To measure soil moisture, we designed a capacitor using the traces of the PCB. When the moisture changes around the traces, the capacitance changes. In order to measure this capacitance change, we created an oscillator that uses an (internal) operational amplfilier to output a signal with frequency directly connected to the capacitance of the soil traces. The frequency of the signal changes when the moisture around the traces changes, giving us the opportunity to measure the frequency of the signal to determine moisture levels. 
 
@@ -90,16 +90,18 @@ Now you can go back to the VSC (Visual Studio Code) and do the Clean-Reconfigure
 
 Firstly, we need to add an extra global variable called **count** just before main.
 
-'''c
+```c
 uint32_t 		count;
+```
 
 Next, in main function, after the ADC_Start();, we can add all the remaining init of the components (Start), which should look like this:
 
-'''c
+```c
 ADC_Start();	
 Opamp_Start();	
 LPComp_Start();	
 TCounter_Start();
+```
 
 Next, we need to count the pulses. In code we do this by:
 1. Reset the Timer-Counter block to zero
@@ -112,20 +114,21 @@ Next, we need to count the pulses. In code we do this by:
 
 In code, it looks like this:
 
-'''c
+```c
 TCounter_SetCounter(0);			
 TCounter_TriggerStart();		
 CyDelay(1000);					
 TCounter_TriggerCapture();		
 CyDelay(1);						
 count = TCounter_GetCapture();	
-TCounter_TriggerReload();		
+TCounter_TriggerReload();	
+```
 
 Now the count of the frequency should be save in the variable **count**.
 
 Your code should look something like this:
 
-'''c
+```c
 int16_t 		tempAir, tempSoil, valueLight;
 uint32_t 		count;
 
@@ -163,5 +166,6 @@ int main(void)
 		TCounter_TriggerReload();						
 	}
 }
+```
 
 This is it for the Part 2.
