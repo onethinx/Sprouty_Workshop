@@ -1,6 +1,6 @@
 # Onethinx Sprouty Workshop
 
-## These are steps that we will use in this workshop. They also contain code are here to copy if you need them.
+## These are steps that we will use in this workshop. They also contain code and are here to copy if you need them.
 
 [Part 1: Soil Temperature, Air Temperature, Light intensity and LEDs.](Part_1_Temperatures_and_Light/)
 
