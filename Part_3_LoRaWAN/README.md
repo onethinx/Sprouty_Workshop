@@ -164,7 +164,7 @@ int main(void)
 	ADC_Start();									
  
 	coreStatus = LoRaWAN_Init(&coreConfig);			
-    coreStatus = LoRaWAN_Join(M4_WaitDeepSleep);				/
+    coreStatus = LoRaWAN_Join(M4_WaitDeepSleep);
 
 	if (!coreStatus.mac.isJoined)							
 	{
