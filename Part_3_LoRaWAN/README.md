@@ -8,17 +8,17 @@ When you opened the VSCode Sprouty Starting Project, you saw some structures in 
 
 ```c
 coreConfiguration_t	coreConfig = {					
-	.Join.KeysPtr = 			&TTN_OTAAkeys,		
-	.Join.DataRate =			DR_AUTO,			
-	.Join.Power =				PWR_MAX,			
-	.Join.MAXTries = 			5,					
+	.Join.KeysPtr = 		&TTN_OTAAkeys,		
+	.Join.DataRate =		DR_AUTO,			
+	.Join.Power =			PWR_MAX,			
+	.Join.MAXTries = 		5,					
 	.Join.SubBand_1st =     	EU_SUB_BANDS_DEFAULT,
 	.Join.SubBand_2nd =     	EU_SUB_BANDS_DEFAULT,
-	.TX.Confirmed = 			false,				
-	.TX.DataRate = 				DR_ADR,				
-	.TX.Power = 				PWR_ADR,			
-	.TX.FPort = 				1,					
-	.RX.Boost = 				true,				
+	.TX.Confirmed = 		false,				
+	.TX.DataRate = 			DR_ADR,				
+	.TX.Power = 			PWR_ADR,			
+	.TX.FPort = 			1,					
+	.RX.Boost = 			true,				
 	.System.Idle.Mode = 		M0_DeepSleep,		
 	.System.Idle.BleEcoON =		false,				
 	.System.Idle.DebugON =		true				
@@ -55,9 +55,9 @@ The global variables should look something like this by now:
 
 ```c
 coreStatus_t 	coreStatus;
-int16_t 		tempAir, tempSoil, valueLight;
-uint32_t 		count;
-uint8_t 		data[4];
+int16_t 	tempAir, tempSoil, valueLight;
+uint32_t 	count;
+uint8_t 	data[4];
 ```
 
 Next, in main, after the component initialisations, we should Init the LoRaWAN stack by giving it the coreConfiguration structure (the LoRaWAN configuration structure above). We whould also Join the LoRaWAN network (The LoRaWAN Join function accepts the type of wait we want to perform, or no wait. In this case, we use M4_WaitDeepSleep which makes your program wait in low power for the LoRaWAN stack to join the network). In case we do not join the network after a given amount of tries, we should do something about it. We will turn on the Red LED and stay in an endless while loop.
@@ -120,17 +120,17 @@ In the end, your code should look something like this:
 #include "sprouty.h"
 
 coreConfiguration_t	coreConfig = {					
-	.Join.KeysPtr = 			&TTN_OTAAkeys,		
-	.Join.DataRate =			DR_AUTO,			
-	.Join.Power =				PWR_MAX,			
-	.Join.MAXTries = 			5,					
+	.Join.KeysPtr = 		&TTN_OTAAkeys,		
+	.Join.DataRate =		DR_AUTO,			
+	.Join.Power =			PWR_MAX,			
+	.Join.MAXTries = 		5,					
 	.Join.SubBand_1st =     	EU_SUB_BANDS_DEFAULT
 	.Join.SubBand_2nd =     	EU_SUB_BANDS_DEFAULT
-	.TX.Confirmed = 			false,				
-	.TX.DataRate = 				DR_ADR,				
-	.TX.Power = 				PWR_ADR,			
-	.TX.FPort = 				1,					
-	.RX.Boost = 				true,				
+	.TX.Confirmed = 		false,				
+	.TX.DataRate = 			DR_ADR,				
+	.TX.Power = 			PWR_ADR,			
+	.TX.FPort = 			1,					
+	.RX.Boost = 			true,				
 	.System.Idle.Mode = 		M0_DeepSleep,		
 	.System.Idle.BleEcoON =		false,				
 	.System.Idle.DebugON =		true				
