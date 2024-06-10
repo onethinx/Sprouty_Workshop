@@ -72,6 +72,8 @@ if (!coreStatus.mac.isJoined)
 }
 ```
 
+NOTE: In case your device is battery powered, you should change this code to go into sleep instead of into a permanent while loop as it would drain the battery until resolved.
+
 Now that we have Initialized the LoRaWAN stack and joined the LoRaWAN network, we should parse the data so we can send it. After reading the data from the ADC and the Counter, we will use the **data** array to save the data to send. Since the data is an array of 4 elements of type uint8_t (4 x 8 bits), we will need to compress the data we got in order to send it. 
 
 * **Data 1** - Moisture data in Counts (Frequency). It goes between 10,000 Hz and 100,000 Hz. Dividing it by 1000, we get kHz, from 10 to 100.
@@ -206,5 +208,7 @@ int main(void)
 	}
 }
 ```
+
+What you can do additionally is, if the device does not join the network, do not use while loop, because that will dran the battery, but change some parameters and put the module to permanent sleep. When changed, it should look something like this
 
 This is it.
