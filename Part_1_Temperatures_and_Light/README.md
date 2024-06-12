@@ -50,10 +50,13 @@ We will set up the ADC component (double click on it): <br>
 **Vneg for S/E**: Vssa<br>
 **S/E result format**: Signed<br>
 **Samples averaged**: 8<br>
+**Averaging Mode:** Sequential, Fixed
 **Number of Channels**: 3<br>
 * Ch. 0: Single ended, Avg ✓<br>
 * Ch. 1: Single ended, Avg ✓<br>
 * Ch. 2: Single ended, Avg ✓<br>
+
+Also, under the tab **common**, select **Single Shot**
 
 Press Apply and OK to save the configuration.
 
