@@ -35,6 +35,8 @@ Setup analog pins (double click on each pin):
 * Name: OA_MINUS, ✓ Analog, High Impedance Analog (P9_1)
 * Name: OA_OUT,   ✓ Analog, High Impedance Analog (P9_2)
 
+![SCH setup opamp](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Sprouty_Basic_SCH.png)
+
 Modify the Opamp, double click on it and modify:
 **Name:** Opamp
 **Output Drive:** Output to pin
