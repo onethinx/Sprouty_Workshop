@@ -43,6 +43,8 @@ Setup analog pins (double click on each pin):
 * Name: NTC_SOIL, ✓ Analog, High Impedance Analog (P10_0)
 * Name: LSENS,    ✓ Analog, High Impedance Analog (P10_2)
 
+![PsoC Creator Part 1 Analog Setup](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Sprouty_Basic_SCH.png)
+
 We will set up the ADC component (double click on it): <br>
 **Name**: ADC<br>
 **Free-run scan rate (SPS)**: 1000<br>
