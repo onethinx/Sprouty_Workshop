@@ -43,17 +43,17 @@ Setup analog pins (double click on each pin):
 * Name: NTC_SOIL, ✓ Analog, High Impedance Analog (P10_0)
 * Name: LSENS,    ✓ Analog, High Impedance Analog (P10_2)
 
-We will set up the ADC component (double click on it):
-**Name**: ADC
-**Free-run scan rate (SPS)**: 1000
-**Vref select**: Vdda
-**Vneg for S/E**: Vssa
-**S/E result format**: Signed
-**Samples averaged**: 8
-**Number of Channels**: 3
-* Ch. 0: Single ended, Avg ✓
-* Ch. 1: Single ended, Avg ✓
-* Ch. 2: Single ended, Avg ✓
+We will set up the ADC component (double click on it): <br>
+**Name**: ADC<br>
+**Free-run scan rate (SPS)**: 1000<br>
+**Vref select**: Vdda<br>
+**Vneg for S/E**: Vssa<br>
+**S/E result format**: Signed<br>
+**Samples averaged**: 8<br>
+**Number of Channels**: 3<br>
+* Ch. 0: Single ended, Avg ✓<br>
+* Ch. 1: Single ended, Avg ✓<br>
+* Ch. 2: Single ended, Avg ✓<br>
 
 Press Apply and OK to save the configuration.
 
