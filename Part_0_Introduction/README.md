@@ -36,6 +36,7 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
 1. Open `Pins` from the Design Wide Resources to configure the LED IO pin
 1. Watch the schematic and find out the right IO pin the LED is connected with (as it's an RGB LED you may choose the color you like)<br>
 ![LED pin](../assets/img/LEDpin.png)<br>
+*NOTE: the Sprouty schematic can be found [here](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/Sprouty_Datasheet_Rev_A.pdf)*
 1. Click the dropdown arrow and select the IO pin we just found for the LED<br>
 ![PinConfig](../assets/img/PinConfig.png)<br>
 1. Now the LED is configured for the right IO, the OTX / PSoC6 configuration project is ready to be built
@@ -50,9 +51,10 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
 
 1. Start Visual Studio Code
 1. Open the Sprouty folder (not the .zip file)<br>
+To open a folder in Visual Studio Code, click on File in the top menu and select `Open Folder...` from the dropdown menu. In the file dialog that appears, navigate to the folder you want to open, select it, and click Select Folder / Open. The folder will then open in Visual Studio Code, and you will see its contents in the Explorer pane on the left side.
 ![VScode Open](../assets/img/SelectingFolder.png)<br>
 
-1. As the project has not run on the PC before and as new APIs been made by PSoC Creator, the project needs to be Clean-Reconfigured before it can be built. Hit the `Clean-Reconfigure` button from the status bar at the bottom of VS Code<br>
+1. As the project has not run on the PC before and as new APIs are made by PSoC Creator, the project needs to be Clean-Reconfigured before it can be built. Hit the `Clean-Reconfigure` button from the status bar at the bottom of VS Code<br>
 ![Clean-Reconfigure](../assets/img/Clean-Reconfigure.png)
 
 1. Press Select programmer and choose CMSIS DAP. If you have a different programmer, choose it. If you received your programmer with Sprouty, select CMSIS DAP.
