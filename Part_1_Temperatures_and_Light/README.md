@@ -1,32 +1,31 @@
-# Onethinx Sprouty Workshop
+# 🚀 Onethinx Sprouty Workshop 🚀
 
 ## Part 1: Temperature and Light.
 
 In the first part of the Workshop, we will implement the reading of the soil temperature, air temperature, light intensity. The temperatures are calculated from the NTC and the light intensity is calculated from the photoresistor. For this functionality we will us the SCAN_ADC analog block.
 
-Firstly, make sure you have fully read [the introduction](https://github.com/onethinx/Sprouty_Workshop/tree/main/Part_0_Introduction), completed the setup and be able to build, program and debug the project. 
-
+Firstly, make sure you have fully read [the introduction](../Part_0_Introduction), completed the setup and be able to build, program and debug the project. 
 
 In your project folder, go in the **Onethinx_Creator.cydsn** folder and double click the **Onethinx_Creator.cyprj**. PSoC Creator will open (If pop up appears, you can click "Register Later"). Now, you can open the TopDesign by double clicking the **TopDesign.cysch** (Source) in the Workspace Explorer on the left side. This is where we do the hadware setup.
 
 From the right pane (Component Catalog, Cypress), navigate to **Analog** -> **ADC** -> **Scanning SAR ADC** and drag it to the work area. Next, navitate to **Ports and Pins** and drag 3 **Analog Pin**s. Lastly, in the same **Ports and Pins** drag 4 **Digital Output Pin**s.
 
-![PsoC Creator Part 1 Setup](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P1Setup.png)
+![PsoC Creator Part 1 Setup](../assets/img/P1Setup.png)
 
 We use 3 Analog input pins:
-* 1 analog pin is used for measuring the voltage of the voltage divider for the **air NTC**.
-* 1 analog pin is used for measuring the voltage of the voltage divider for the **soil NTC**.
-* 1 analog pin is used for measuring the voltage of the voltage divider for the **photoresistor**.
+* 1 analog pin is used for measuring the voltage of the voltage divider for the *Air NTC*.
+* 1 analog pin is used for measuring the voltage of the voltage divider for the *Soil NTC*.
+* 1 analog pin is used for measuring the voltage of the voltage divider for the *Photoresistor*.
 
 We use 4 Digital output pins:
-* 1 digital output pin is used for powering the **Green LED**
-* 1 digital output pin is used for powering the **Blue LED**
-* 1 digital output pin is used for powering the **Red LED**
+* 1 digital output pin is used for powering the *Green LED*
+* 1 digital output pin is used for powering the *Blue LED*
+* 1 digital output pin is used for powering the *Red LED*
 * 1 digital output pin is used for powering the resistor dividers of the sensors above. Before reading any of the analog pins, we will have to turn this pin **HIGH** and after we are done, we will turn this pin **LOW**. This done so when the device is in low power mode (sleep), it does not consume energy, as during sleep, we do not need these measurements. In short, we save power.
 
 The schematic for the analog part looks like this:
 
-![PsoC Creator Part 1 Analog Setup](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P1Analog.png)
+![PsoC Creator Part 1 Analog Setup](../assets/img/P1Analog.png)
 
 Setup digital output pins (double click on each pin):
 * Name: LED_R, ✓ Digital output, Strong Drive (P12_5)
@@ -64,7 +63,7 @@ You can now connect The analog pins to the ADC and you should have something lik
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
-![PsoC Creator Part 1 Done](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P1Done.png)
+![PsoC Creator Part 1 Done](../assets/img/P1Done.png)
 
 Now that you have the hardware configuration done, we just need to connect these pins, to the actual pins of the microcontroller. You do that by double clicking on the **Pins** on the left pane "Workspace Explorer". There you can set the:
 * LED_R     = P12_5
@@ -75,7 +74,7 @@ Now that you have the hardware configuration done, we just need to connect these
 * NTC_SOIL  = P10_0
 * LSENS     = P10_2
 
-![Part 1 Pins](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P1Pins.png)
+![Part 1 Pins](../assets/img/P1Pins.png)
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
@@ -152,5 +151,5 @@ int main(void)
 }
 ```
 
-This is it for Part 1. You can find [Part 2: Soil Moisture measurement implementation](Part_2_Soil_Moisture/) over here.<br><br><br>
+This is it for Part 1. You can find [Part 2: Soil Moisture measurement implementation](../Part_2_Soil_Moisture) over here.<br><br><br>
 *NOTE: if you are experiencing issues, you may contact us directly at* [our Discord channel](https://discord.gg/CvzZwXDk)<br>
