@@ -2,13 +2,10 @@
 
 ## Part 1: Temperature and Light.
 
-In the first part of the Workshop, we will implement the reading of the soil temperature, air temperature, light intensity. The temperatures are calculated from the NTC and the light intensity is calculated from the photoresistor. For this functionality we will us the analog block.
+In the first part of the Workshop, we will implement the reading of the soil temperature, air temperature, light intensity. The temperatures are calculated from the NTC and the light intensity is calculated from the photoresistor. For this functionality we will us the SCAN_ADC analog block.
 
-Firstly, download or clone Sprouty_StartCode repository from Onethinx Github page. You can open this folder in Visual Studio Code. 
+Firstly, make sure you have fully read [the introduction](https://github.com/onethinx/Sprouty_Workshop/tree/main/Part_0_Introduction), completed the setup and be able to build, program and debug the project. 
 
-To open a folder in Visual Studio Code, start by launching the application. Once it's open, click on File in the top menu and select Open Folder... from the dropdown menu. Alternatively, you can use the keyboard shortcut Ctrl + K followed by Ctrl + O on Windows/Linux or Cmd + K followed by Cmd + O on Mac. In the file dialog that appears, navigate to the folder you want to open, select it, and click Select Folder on Windows/Linux or Open on Mac. The folder will then open in Visual Studio Code, and you will see its contents in the Explorer pane on the left side.
-
-Next, inside Visual Studio Code, navigate to the main.c file and double click it (main.c is located inside the source folder). This is where you write your code. You can now minimize the Visual Studio Code as we will come back later.
 
 In your project folder, go in the **Onethinx_Creator.cydsn** folder and double click the **Onethinx_Creator.cyprj**. PSoC Creator will open (If pop up appears, you can click "Register Later"). Now, you can open the TopDesign by double clicking the **TopDesign.cysch** (Source) in the Workspace Explorer on the left side. This is where we do the hadware setup.
 
@@ -82,13 +79,9 @@ Now that you have the hardware configuration done, we just need to connect these
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
-Build the configuration by pressing Shift + F6 or by pressing Build -> Build Onethinx_Creator. 
+Build the configuration by hitting the `Generate Application` Icon in the toolbar or select `Build` >> `Generate Application`
 
-Now that you have it built, it generated the API which can be used in Visual Studio Code. You can now open the Visual Studio Code which you previously minimised. In Visual Studio Code, in your project, you need to press "Clean-Reconfigure" in order for the program to recognize the newly generate API.
-
-If you are having dificulty, you can see this link which will show you how to buld, clean reconfigure and run your project: https://github.com/onethinx/FarmBug_Workshop_Introduction
-
-Now that you have your main.c file opened in Visual Studio Code (VSC for short), you can start editing it. Before main, we can create some global variables:
+Now, the generated API can be used in Visual Studio Code. Open Visual Studio Code and press `Clean-Reconfigure` in order prepare the build tp include the newly generate API files. Navigate to the main.c file and double-click it (main.c is located inside the source folder). This is where you write your code. Before main, we can create some global variables:
 
 ```c
 int16_t 		tempAir, tempSoil, valueLight;
