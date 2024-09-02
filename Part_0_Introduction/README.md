@@ -68,4 +68,5 @@ To open a folder in Visual Studio Code, click on File in the top menu and select
 6. Cross fingers and hopefully the firmware will be programmed, the project will enter debug mode (yellow bar) and the LED will be flashing 🎉<br>
 ![Succeeded](../assets/img/Succeeded.gif)<br>
 *NOTE: your Sproudy model may differ from the one pictured*<br>
-7. Congratulations!<br>🤓
+7. If all built and programmed well, congratulations! 🤓<br> You may head directly to [Part 1: Soil Temperature, Air Temperature, Light intensity and LEDs.](Part_1_Temperatures_and_Light/) <br><br><br>
+*NOTE: if you are experiencing issues, you may contact us directly at* [our Discord channel](https://discord.gg/CvzZwXDk)<br>
