@@ -170,5 +170,5 @@ int main(void)
 }
 ```
 
-That is it for Part 2. You can find [Part 3: LoRaWAN implementation (and Sleep)](Part_3_LoRaWAN/) over here.<br><br><br>
+That is it for Part 2. You can find [Part 3: LoRaWAN implementation (and Sleep)](../Part_3_LoRaWAN/) over here.<br><br><br>
 *NOTE: if you are experiencing issues, you may contact us directly at* [our Discord channel](https://discord.gg/CvzZwXDk)<br>
