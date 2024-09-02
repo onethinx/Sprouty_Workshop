@@ -29,7 +29,7 @@ In this structure you configure the LoRaWAN Stack. If you are new to LoRaWAN, yo
 
 in the same folder as the main.c, you can see a folder called OnethinxCore. If you expand this folder, you will see a header file called LoRaWAN_keys.h. This is where we save the LoRaWAN keys. You can double click it to modify it.
 
-![Part 3 Keys](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P3Keys.png)
+![Part 3 Keys](../assets/img/P3Keys.png)
 
 In the following structure you can configure the Sleep parameters. For now, you do not need to modify it, but we encourage you to study it a bit after the workshop has finished.
 
