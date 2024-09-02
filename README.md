@@ -2,7 +2,7 @@
 
 ## These are steps that we will use in this workshop. They also contain code and are here to copy if you need them.
 
-[Part 0: Introduction, IDE setup, Start code.](Part_1_Introduction/)
+[Part 0: Introduction, IDE setup, Start code.](Part_0_Introduction/)
 
 [Part 1: Soil Temperature, Air Temperature, Light intensity and LEDs.](Part_1_Temperatures_and_Light/)
 
