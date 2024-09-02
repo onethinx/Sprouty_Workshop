@@ -35,7 +35,7 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
 1. Open `Pins` from the Design Wide Resources to configure the LED IO pin
 1. Watch the schematic and find out the right IO pin the LED is connected with (as it's an RGB LED you may choose the color you like)<br>
 ![LED pin](../assets/img/LEDpin.png)<br>
-*NOTE: the Sprouty schematic can be found [here](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/Sprouty_Datasheet_Rev_A.pdf)*
+*NOTE: the Sprouty schematic can be found [here](../assets/Sprouty_Datasheet_Rev_A.pdf)*
 1. Click the dropdown arrow and select the IO pin we just found for the LED<br>
 ![PinConfig](../assets/img/PinConfig.png)<br>
 1. Now the LED is configured for the right IO, the OTX / PSoC6 configuration project is ready to be built
