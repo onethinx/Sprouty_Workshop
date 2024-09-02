@@ -6,7 +6,7 @@ To measure soil moisture, we designed a capacitor using the traces of the PCB. W
 
 In order to count the pulses, we use an integrated Timer-Counter block. Since the Counter counts pulses, we need to change the frequency we get from the oscillator, to pulses which the counter can count. The general idea looks something like this:
 
-![Sprouty Moisture](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/HowSpoutyMoistureWorks.png)
+![Sprouty Moisture](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/HowSpoutyMoistureWorks.png)
 
 If you go back to the PSoC Creator, we need to add these blocks and connect them.
 
@@ -18,11 +18,11 @@ Firstly, on the right side, you can drag and drop the following:
 * Timer Counter
 * Clock
 
-![Part 2 Components to use](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/P2Components.png)
+![Part 2 Components to use](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P2Components.png)
 
 Now that we have dragged the components, we need to connect and modify them. The following image shows the components.
 
-![Part 2 Dragged](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/P2Dragged.png)
+![Part 2 Dragged](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P2Dragged.png)
 
 
 We use 3 Analog pins:
@@ -35,21 +35,21 @@ Setup analog pins (double click on each pin):
 * Name: OA_MINUS, ✓ Analog, High Impedance Analog (P9_1)
 * Name: OA_OUT,   ✓ Analog, High Impedance Analog (P9_2)
 
-![SCH setup opamp](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Sprouty_Basic_SCH.png)
+![SCH setup opamp](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Sprouty_Basic_SCH.png)
 
 Modify the Opamp, double click on it and modify:
 **Name:** Opamp
 **Output Drive:** Output to pin
 Press Apply and OK to save the configuration.
 
-![Part 2 OpAmp](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Config_OpAmp.png)
+![Part 2 OpAmp](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_OpAmp.png)
 
 Modify the Comparator, double click on it and modify:
 **Name:** LPComp
 **Power/Speed:** Normal Power/Fast
 Press Apply and OK to save the configuration.
 
-![Part 2 LPComp](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Config_LPComp.png)
+![Part 2 LPComp](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_LPComp.png)
 
 Modify the Counter, double click on it and modify:
 **Basic Tab**
@@ -60,8 +60,8 @@ Modify the Counter, double click on it and modify:
 * **Count Input:** Rising Edge
 Press Apply and OK to save the configuration.
 
-![Part 2 TC1](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Config_Counter1.png)
-![Part 2 TC2](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Config_Counter2.png)
+![Part 2 TC1](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_Counter1.png)
+![Part 2 TC2](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_Counter2.png)
 
 Modify the Clock, double click on it and modify:
 **Frequency:** 8 MHz
@@ -69,7 +69,7 @@ Press Apply and OK to save the configuration.
 
 Once you have all the components modified, you should connect them like this:
 
-![Part 2 Connections](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/P2Connections.png)
+![Part 2 Connections](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P2Connections.png)
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
@@ -82,7 +82,7 @@ You can now set the following pins:
 
 Finally, all pins should look like this:
 
-![Part 2 All pins connected](https://github.com/onethinx/Sprouty_Workshop/blob/main/img/Config_Pins.png)
+![Part 2 All pins connected](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_Pins.png)
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
