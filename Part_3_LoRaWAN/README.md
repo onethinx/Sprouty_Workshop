@@ -1,10 +1,10 @@
-# Onethinx Sprouty Workshop
+# 🚀 Onethinx Sprouty Workshop 🚀
 
 ## Part 3: LoRaWAN (and Sleep)
 
-The LoRaWAN and Sleep part will no longer requre PSoC Creator to setup. The whole configuration is dont in VSCode.
+The LoRaWAN and Sleep part will no longer requre PSoC Creator to setup. The whole chip configuration is done in PSoC Creator.
 
-When you opened the VSCode Sprouty Starting Project, you saw some structures in the begginng:
+When you opened the VSCode Sprouty Starting Project, you saw some structures in the beginning:
 
 ```c
 coreConfiguration_t	coreConfig = {					
@@ -25,13 +25,13 @@ coreConfiguration_t	coreConfig = {
 };
 ```
 
-In this structure you configure the LoRaWAN Stack. If you are new to LoRaWAN, you do not need to modify it, but we encurage you to study it a bit after the workshop has finished.
+In this structure you configure the LoRaWAN Stack. If you are new to LoRaWAN, you do not need to modify it, but we encourage you to study it a bit after the workshop has finished.
 
 in the same folder as the main.c, you can see a folder called OnethinxCore. If you expand this folder, you will see a header file called LoRaWAN_keys.h. This is where we save the LoRaWAN keys. You can double click it to modify it.
 
 ![Part 3 Keys](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P3Keys.png)
 
-In the following structure you can configure the Sleep parameters. For now, you do not need to modify it, but we encurage you to study it a bit after the workshop has finished.
+In the following structure you can configure the Sleep parameters. For now, you do not need to modify it, but we encourage you to study it a bit after the workshop has finished.
 
 ```c
 sleepConfig_t sleepConfig=							
@@ -46,10 +46,10 @@ sleepConfig_t sleepConfig=
 ```
 
 To go forward we need 2 new global variables:
-* coreStatus_t coreStatus;
-* uint8_t data[4]
+* `coreStatus_t coreStatus;`
+* `uint8_t data[4];`
 
-Variable coreStatus is good to have for easier debugging. Each LoRaWAN API call returns coreStatus_t data which is helpful for debugging. In the **data** array, we will save the data which we will later send via LoRaWAN.
+Variable `coreStatus` is good to have for easier debugging. Each LoRaWAN API call returns `coreStatus_t` data which is helpful for debugging. In the `data` array, we will save the data which we will later send via LoRaWAN.
 
 The global variables should look something like this by now:
 
@@ -74,12 +74,14 @@ if (!coreStatus.mac.isJoined)
 
 NOTE: In case your device is battery powered, you should change this code to go into sleep instead of into a permanent while loop as it would drain the battery until resolved.
 
-Now that we have Initialized the LoRaWAN stack and joined the LoRaWAN network, we should parse the data so we can send it. After reading the data from the ADC and the Counter, we will use the **data** array to save the data to send. Since the data is an array of 4 elements of type uint8_t (4 x 8 bits), we will need to compress the data we got in order to send it. 
+Now that we have initialized the LoRaWAN stack and joined the LoRaWAN network, we should parse the data so we can send it. After reading the data from the ADC and the Counter, we will use the **data** array to save the data to send. Since the data is an array of 4 elements of type uint8_t (4 x 8 bits), we will need to compress the data we got in order to send it. 
+| Data   | Description                                                                                                                   |
+|--------|-------------------------------------------------------------------------------------------------------------------------------|
+| `data[0]` | Moisture data in Counts (Frequency). It goes between 10,000 Hz and 100,000 Hz. Dividing it by 1000, we get kHz, from 10 to 100. |
+| `data[1]` | Soil Temperature Data in Celsius (resolution 1°C). This is expected to be in the range between -40°C and +100°C (extremes). Subtract by 40 on the server side to get the real temperature. |
+| `data[2]` | Air Temperature Data in Celsius (resolution 1°C). This is expected to be in the range between -40°C and +100°C (extremes). Subtract by 40 on the server side to get the real temperature.  |
+| `data[3]` | Light mV value which we divide by 20 in order for it to fit in 8 bits (uint_8).                                                |
 
-* **Data 1** - Moisture data in Counts (Frequency). It goes between 10,000 Hz and 100,000 Hz. Dividing it by 1000, we get kHz, from 10 to 100.
-* **Data 2** - Soil Temperature Data in Celsius (resolution 1°C). This is expected to be in range between -40°C and +100°C (extremes). Substract by 40 on the server side to get the real temperature. 
-* **Data 3** - Air Temperature Data in Celsius (resolution 1°C). This is expected to be in range between -40°C and +100°C (extremes). Substract by 40 on the server side to get the real temperature.
-* **Data 4** - Light mV value which we divide by 20 in order for it to fit in 8 bits (uint_8).
 
 ```c
 data[0] = (uint8_t)(count/1000);	
@@ -102,7 +104,7 @@ LoRaWAN_Sleep(&sleepConfig);
 
 Also, in order to have an idea when code is being executed and when it is sleeping, we can turn on the Green LED on before checking the ADC and turn it off after we finish counting.
 
-```
+```c
 Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0); // Turn on the Green LED
 Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1); // Turn off the Green LED
 ```
@@ -166,7 +168,7 @@ int main(void)
 	ADC_Start();									
  
 	coreStatus = LoRaWAN_Init(&coreConfig);			
-    coreStatus = LoRaWAN_Join(M4_WaitDeepSleep);
+	coreStatus = LoRaWAN_Join(M4_WaitDeepSleep);
 
 	if (!coreStatus.mac.isJoined)							
 	{
@@ -176,7 +178,7 @@ int main(void)
 
 	for(;;)
 	{
-        Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);
+		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);
 
 		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);				
 		Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 1);					
@@ -203,12 +205,14 @@ int main(void)
 		data[3] = (uint8_t)(valueLight/20);						
 		
 		LoRaWAN_Send(&data, 4, M4_WaitDeepSleep);			
-        Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1);
+		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1);
 		LoRaWAN_Sleep(&sleepConfig);							
 	}
 }
 ```
 
-What you can do additionally is, if the device does not join the network, do not use while loop, because that will dran the battery, but change some parameters and put the module to permanent sleep. When changed, it should look something like this
+What you can do additionally is, if the device does not join the network, do not use while loop, because that will drain the battery, but change some parameters and put the module to permanent sleep.
 
-This is it.
+That is is. We hope you enjoyed this Sprouty workshop! 🤓
+
+*Your feedback is very welcome! Please join* [our Discord channel](https://discord.gg/CvzZwXDk)<br>
