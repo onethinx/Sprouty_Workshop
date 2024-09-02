@@ -1,6 +1,6 @@
 # 🚀 Onethinx Sprouty Workshop 🚀
 
-## Part 2: Soil Moisture.
+## Part 2: Soil Moisture
 
 To measure soil moisture, we designed a capacitor using the traces of the PCB. When the moisture changes around the traces, the capacitance changes. In order to measure this capacitance change, we created an oscillator that uses an (internal) operational amplfilier to output a signal with frequency directly connected to the capacitance of the soil traces. The frequency of the signal changes when the moisture around the traces changes, giving us the opportunity to measure the frequency of the signal to determine moisture levels. 
 
