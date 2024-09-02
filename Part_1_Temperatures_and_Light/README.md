@@ -6,7 +6,7 @@ In the first part of the Workshop, we will implement the reading of the soil tem
 
 Firstly, make sure you have fully read [the introduction](../Part_0_Introduction), completed the setup and be able to build, program and debug the project. 
 
-In your project folder, go in the **Onethinx_Creator.cydsn** folder and double click the **Onethinx_Creator.cyprj**. PSoC Creator will open (If pop up appears, you can click "Register Later"). Now, you can open the TopDesign by double clicking the **TopDesign.cysch** (Source) in the Workspace Explorer on the left side. This is where we do the hadware setup.
+In your project folder, go in the `Onethinx_Creator.cydsn` folder and double click the `Onethinx_Creator.cyprj`. PSoC Creator will open (If pop up appears, you can click "Register Later"). Now, you can open the TopDesign by double clicking the `TopDesign.cysch` (Source) in the Workspace Explorer on the left side. This is where we do the hadware setup.
 
 From the right pane (Component Catalog, Cypress), navigate to **Analog** -> **ADC** -> **Scanning SAR ADC** and drag it to the work area. Next, navitate to **Ports and Pins** and drag 3 **Analog Pin**s. Lastly, in the same **Ports and Pins** drag 4 **Digital Output Pin**s.
 
@@ -21,66 +21,81 @@ We use 4 Digital output pins:
 * 1 digital output pin is used for powering the *Green LED*
 * 1 digital output pin is used for powering the *Blue LED*
 * 1 digital output pin is used for powering the *Red LED*
-* 1 digital output pin is used for powering the resistor dividers of the sensors above. Before reading any of the analog pins, we will have to turn this pin **HIGH** and after we are done, we will turn this pin **LOW**. This done so when the device is in low power mode (sleep), it does not consume energy, as during sleep, we do not need these measurements. In short, we save power.
+* 1 digital output pin is used for powering the resistor dividers of the sensors above. Before reading any of the analog pins, we will have to turn this pin `HIGH` and after we are done, we will turn this pin `LOW`. This done so when the device is in low power mode (sleep), it does not consume energy, as during sleep, we do not need these measurements. In short, we save power.
 
 The schematic for the analog part looks like this:
 
 ![PsoC Creator Part 1 Analog Setup](../assets/img/P1Analog.png)
 
-Setup digital output pins (double click on each pin):
-* Name: LED_R, ✓ Digital output, Strong Drive (P12_5)
-* Name: LED_G, ✓ Digital output, Strong Drive (P12_4)
-* Name: LED_B, ✓ Digital output, Strong Drive (P10_3)
-* Name: SPWR,  ✓ Digital output, Strong Drive (P11_5)
-(Press Apply and OK for each to save the configuration.)
+Setup digital pins (double click on each pin):
+| Name   | Digital Output | Drive Type   | Pin    |
+|--------|----------------|--------------|--------|
+| LED_R  | ✓              | Strong Drive | P12_5  |
+| LED_G  | ✓              | Strong Drive | P12_4  |
+| LED_B  | ✓              | Strong Drive | P10_3  |
+| SPWR   | ✓              | Strong Drive | P11_5  |
 
 Setup analog pins (double click on each pin):
-* Name: NTC_AIR,  ✓ Analog, High Impedance Analog (P10_1)
-* Name: NTC_SOIL, ✓ Analog, High Impedance Analog (P10_0)
-* Name: LSENS,    ✓ Analog, High Impedance Analog (P10_2)
+| Name     | Analog | Drive Type              | Pin   |
+|----------|--------|-------------------------|-------|
+| NTC_AIR  | ✓      | High Impedance Analog   | P10_1 |
+| NTC_SOIL | ✓      | High Impedance Analog   | P10_0 |
+| LSENS    | ✓      | High Impedance Analog   | P10_2 |
 
-We will set up the ADC component (double click on it): <br>
-**Name**: ADC<br>
-**Free-run scan rate (SPS)**: 1000<br>
-**Vref select**: Vdda<br>
-**Vneg for S/E**: Vssa<br>
-**S/E result format**: Signed<br>
-**Samples averaged**: 8<br>
-**Averaging Mode:** Sequential, Fixed
-**Number of Channels**: 3<br>
-* Ch. 0: Single ended, Avg ✓<br>
-* Ch. 1: Single ended, Avg ✓<br>
-* Ch. 2: Single ended, Avg ✓<br>
 
-Also, under the tab **common**, select **Single Shot**
+We will set up the ADC component: <br>
+| Property                 | Value                   |
+|--------------------------|-------------------------|
+| Name                     | ADC                     |
+| Free-run scan rate (SPS) | 1000                    |
+| Vref select              | Vdda                    |
+| Vneg for S/E             | Vssa                    |
+| S/E result format        | Signed                  |
+| Samples averaged         | 8                       |
+| Averaging Mode           | Sequential, Fixed       |
+| Number of Channels       | 3                       |
 
-Press Apply and OK to save the configuration.
+**Channels Configuration:**
+
+| Channel | Type         | Avg |
+|---------|--------------|-----|
+| Ch. 0   | Single ended | ✓   |
+| Ch. 1   | Single ended | ✓   |
+| Ch. 2   | Single ended | ✓   |
+
+Also, under the tab `Common`, select `Single Shot`
+| Sample mode  |
+|--------------|
+| Single shot  |
 
 You can now connect The analog pins to the ADC and you should have something like this:
-* NTC Soil = Channel 0
-* NTC Air = Channel 1
-* Light = Channel 2
+| Sensor    | Channel   |
+|-----------|-----------|
+| NTC Soil  | Channel 0 |
+| NTC Air   | Channel 1 |
+| Light     | Channel 2 |
 
-Save the configuration by pressing Ctrl + S or File -> Save.
 
 ![PsoC Creator Part 1 Done](../assets/img/P1Done.png)
 
-Now that you have the hardware configuration done, we just need to connect these pins, to the actual pins of the microcontroller. You do that by double clicking on the **Pins** on the left pane "Workspace Explorer". There you can set the:
-* LED_R     = P12_5
-* LED_G     = P12_4
-* LED_B     = P10_3
-* SPWR      = P11_5
-* NTC_AIR   = P10_1
-* NTC_SOIL  = P10_0
-* LSENS     = P10_2
+Now that you have the hardware configuration done, we just need to connect these pins, to the actual pins of the microcontroller. You do that by double clicking on the `Pins` on the left pane of the `Workspace Explorer`. There you can set the pins:
+| Name      | Pin   |
+|-----------|-------|
+| LED_R     | P12_5 |
+| LED_G     | P12_4 |
+| LED_B     | P10_3 |
+| SPWR      | P11_5 |
+| NTC_AIR   | P10_1 |
+| NTC_SOIL  | P10_0 |
+| LSENS     | P10_2 |
 
 ![Part 1 Pins](../assets/img/P1Pins.png)
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
-Build the configuration by hitting the `Generate Application` Icon in the toolbar or select `Build` >> `Generate Application`
+Build the configuration by hitting the `Generate Application` icon in the toolbar or select `Build` >> `Generate Application`
 
-Now, the generated API can be used in Visual Studio Code. Open Visual Studio Code and press `Clean-Reconfigure` in order prepare the build tp include the newly generate API files. Navigate to the main.c file and double-click it (main.c is located inside the source folder). This is where you write your code. Before main, we can create some global variables:
+Now, the generated API can be used in Visual Studio Code. Open Visual Studio Code and press `Clean-Reconfigure` in order prepare the build to include the newly generate API files. Navigate to the main.c file and double-click it (main.c is located inside the source folder). This is where you write your code. Before main, we can create some global variables:
 
 ```c
 int16_t 		tempAir, tempSoil, valueLight;
