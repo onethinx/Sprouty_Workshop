@@ -8,7 +8,7 @@
 ![Sprouty parts needed](https://raw.githubusercontent.com/onethinx/Sprouty_Workshop/main/assets/img/Sprouty_need_500px.jpeg)
 ---
 ### 1.2 PSoC Creator
-PSoC Creator is the official tool from Infineon to do the chip configuration on the PSoC6
+PSoC Creator is the official tool from Infineon to do the chip configuration on PSoC6
   - Download PSoC Creator [from here](https://drive.google.com/drive/folders/17IZQReRqCk6mNGf5SMYcHy2We6gLfeac?usp=share_link) or from [the official Infineon PSoC Creator page](https://www.infineon.com/cms/en/design-support/tools/sdk/psoc-software/psoc-creator/)
   - Download PDL 3.1.7 [from here](https://drive.google.com/drive/folders/17IZQReRqCk6mNGf5SMYcHy2We6gLfeac?usp=share_link) or from [the official Infineon PSoC Creator page](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.psocperipheraldriverlibrarypdl)
   - Install PSoC Creator (after installation, check the bottom checkbox to continue without registration information)
@@ -34,43 +34,36 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
 ![PSoCCreator_WorkspaceExplorer](../assets/img/PSoCCreator_WorkspaceExplorer.png)<br>
 1. Open (double click) `TopDesign.cysch` and view the internal wiring of the PSoC6, causing the LED to flash
 1. Open `Pins` from the Design Wide Resources to configure the LED IO pin
-1. Watch the schematic and find out the right IO pin the LED is connected with<br>
+1. Watch the schematic and find out the right IO pin the LED is connected with (as it's an RGB LED you may choose the color you like)<br>
 ![LED pin](../assets/img/LEDpin.png)<br>
 1. Click the dropdown arrow and select the IO pin we just found for the LED<br>
 ![PinConfig](../assets/img/PinConfig.png)<br>
 1. Now the LED is configured for the right IO, the OTX / PSoC6 configuration project is ready to be built
-1. Hit the Build Icon in the toolbar or select `Build >> Build Onethinx_Creator (Shift + F6)`<br>
-![Build](../assets/img/Build.png)<br>
-1. Wait for PSoC Creator to build the configuration project<br>
-![Output](../assets/img/Output.png)<br>
-1. The message `Build Succeeded` will appear when building is ready without issues
+1. Hit the 'Generate Application' Icon in the toolbar or select `Build >> Generate Application`<br>
+![Build](../assets/img/Creator_Build.png)<br>
+1. Wait for PSoC Creator to generate the application files(API)<br>
+![Output](../assets/img/Creator_Generate.png)<br>
+1. The message `Build Skipped` will appear when generating the API is ready without issues
 1. Chip configuration is done, PSoC Creator may now be closed.
 
 ### 2.2 Firmware Coding and Debugging (uses Visual Studio Code)
 
 1. Start Visual Studio Code
-2. Open the Sprouty folder (not the .zip file)
-<br>
+1. Open the Sprouty folder (not the .zip file)<br>
+![VScode Open](../assets/img/SelectingFolder.png)<br>
 
-![VScode Open](../assets/img/SelectingFolder.png)
+1. As the project has not run on the PC before and as new APIs been made by PSoC Creator, the project needs to be Clean-Reconfigured before it can be built. Hit the `Clean-Reconfigure` button from the status bar at the bottom of VS Code<br>
+![Clean-Reconfigure](../assets/img/Clean-Reconfigure.png)
 
-<br>
-3. As the project has not run on the PC before, it needs to be Clean-Reconfigured before it can be built. Hit the `Clean-Reconfigure` button from the status bar at the bottom of VS Code<br>
+1. Press Select programmer and choose CMSIS DAP. If you have a different programmer, choose it. If you received your programmer with Sprouty, select CMSIS DAP.
+![Select Programmer](../assets/img/Select_Programmer.png)
 
-![Clean Build Launch](../assets/img/Clean_Build_Launch.png)
+1. After successfull configuration the project can be Built and Launched from the debugger. 
+  Make sure the Sprouty is connected to the debugger and PC before launching the debug session.
+  Hit the `Build-And-Launch` button from the status bar at the bottom of VS Code.
+![Clean-Reconfigure](../assets/img/Build-Launch.png)<br>
 
-<br>
-5. After successfull configuration (the terminal window will show: "Terminal will be reused by tasks, press..." when ready), the project can be Built and Launched from the debugger. 
-  Make sure the Sprouty is connected to the debugger and PC before launching the debug session
-  Hit the `Build-And-Launch` button from the status bar at the bottom of VS Code
-6. Press Select programmer and choose CMSIS DAP. If you have a different programmer, choose it. If you received your programmer with Sprouty, select CMSIS DAP.
-   
-![Select Programmer](../assets/img/SelectingProgrammer.png)
-
-6. Cross fingers and hopefully the firmware will be programmed, the project will enter debug mode (yellow bar) and the blue LED will be flashing🎉
- <br>
-
-![Succeeded](../assets/img/Succeeded.gif)
-
-<br>
+6. Cross fingers and hopefully the firmware will be programmed, the project will enter debug mode (yellow bar) and the LED will be flashing 🎉<br>
+![Succeeded](../assets/img/Succeeded.gif)<br>
+*NOTE: your Sproudy model may differ from the one pictured*<br>
 7. Congratulations!<br>🤓
