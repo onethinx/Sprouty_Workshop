@@ -27,7 +27,7 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
 
 ### 2.1 Sprouty Chip Setup / Configuration Project (uses Windows / PSoC Creator)
 
-1. Download the Sprouty Project [from here](../assets/Sprouty_StartCode.zip)
+1. Download the Sprouty Project [from here](https://github.com/onethinx/Sprouty_Workshop/raw/main/assets/Sprouty_StartCode.zip)
 1. After downloading, right click the .zip file and select 'Extract All'. Choose a short folder path and make sure the folder ends with `\Sprouty_StartCode` (e.g. `C:\...\Sprouty_StartCode`)
 1. Open (double click) `Onethinx_Creator.cyprj` inside the project folder `..\Sprouty_StartCode\Onethinx_Creator.cydsn`. PSoC Creator will open<br>
 ![PSoCCreator_WorkspaceExplorer](../assets/img/PSoCCreator_WorkspaceExplorer.png)<br>
