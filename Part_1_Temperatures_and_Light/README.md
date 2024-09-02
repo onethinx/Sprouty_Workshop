@@ -1,6 +1,6 @@
 # 🚀 Onethinx Sprouty Workshop 🚀
 
-## Part 1: Temperature and Light.
+## Part 1: Temperature and Light
 
 In the first part of the Workshop, we will implement the reading of the soil temperature, air temperature, light intensity. The temperatures are calculated from the NTC and the light intensity is calculated from the photoresistor. For this functionality we will us the SCAN_ADC analog block.
 
