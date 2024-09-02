@@ -152,4 +152,5 @@ int main(void)
 }
 ```
 
-This is it for Part 1.
+This is it for Part 1. You can find [Part 2: Soil Moisture measurement implementation](Part_2_Soil_Moisture/) over here.<br><br><br>
+*NOTE: if you are experiencing issues, you may contact us directly at* [our Discord channel](https://discord.gg/CvzZwXDk)<br>
