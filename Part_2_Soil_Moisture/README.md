@@ -1,4 +1,4 @@
-# Onethinx Sprouty Workshop
+# 🚀 Onethinx Sprouty Workshop 🚀
 
 ## Part 2: Soil Moisture.
 
@@ -30,55 +30,67 @@ We use 3 Analog pins:
 * 1 analog pin is used for Operational Amplifier Negative Terminal.
 * 1 analog pin is used for Operational Amplifier Output Terminal.
 
-Setup analog pins (double click on each pin):
-* Name: OA_PLUS,  ✓ Analog, High Impedance Analog (P9_0)
-* Name: OA_MINUS, ✓ Analog, High Impedance Analog (P9_1)
-* Name: OA_OUT,   ✓ Analog, High Impedance Analog (P9_2)
+Setup the analog pins:
+| Name     | Analog | Drive Type              | Pin   |
+|----------|--------|-------------------------|-------|
+| OA_PLUS  | ✓      | High Impedance Analog   | P9_0  |
+| OA_MINUS | ✓      | High Impedance Analog   | P9_1  |
+| OA_OUT   | ✓      | High Impedance Analog   | P9_2  |
+
 
 ![SCH setup opamp](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Sprouty_Basic_SCH.png)
 
-Modify the Opamp, double click on it and modify:
-**Name:** Opamp
-**Output Drive:** Output to pin
-Press Apply and OK to save the configuration.
+Configure the Opamp:
+| Property     | Value              |
+|--------------|--------------------|
+| Name.        | Opamp              |
+| Output Drive | Output to pin      |
 
 ![Part 2 OpAmp](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_OpAmp.png)
 
-Modify the Comparator, double click on it and modify:
-**Name:** LPComp
-**Power/Speed:** Normal Power/Fast
-Press Apply and OK to save the configuration.
+Set up the Comparator:
+| Property     | Value              |
+|--------------|--------------------|
+| Name         | LPComp             |
+| Power/Speed  | Normal Power/Fast  |
+
 
 ![Part 2 LPComp](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_LPComp.png)
 
-Modify the Counter, double click on it and modify:
-**Basic Tab**
-* **Name:** TCounter
-* **Resolution:** 32-bits
-* **Period:** 4000000
-**Inputs Tab**
-* **Count Input:** Rising Edge
-Press Apply and OK to save the configuration.
+Modify the Counter
+`Basic Tab`
+| Property     | Value    |
+|--------------|----------|
+| Name         | TCounter |
+| Resolution   | 32-bits  |
+| Period       | 4000000  |
 
 ![Part 2 TC1](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_Counter1.png)
+
+`Inputs Tab`
+| Property    | Value        |
+|-------------|--------------|
+| Count Input | Rising Edge  |
+
 ![Part 2 TC2](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Config_Counter2.png)
 
-Modify the Clock, double click on it and modify:
-**Frequency:** 8 MHz
-Press Apply and OK to save the configuration.
+Configure the Clock:
+| Property   | Value  |
+|------------|--------|
+| Frequency  | 8 MHz  |
 
 Once you have all the components modified, you should connect them like this:
 
 ![Part 2 Connections](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/P2Connections.png)
 
-Save the configuration by pressing Ctrl + S or File -> Save.
-
-Now open the **Pins** again. You do that again by double clicking on the **Pins** on the left pane "Workspace Explorer".
+Now open the `Pins` again. You do that again by double clicking on the `Pins` on the left pane `Workspace Explorer`.
 
 You can now set the following pins:
-* OA_PLUS,  = P9_0
-* OA_MINUS, = P9_1
-* OA_OUT,   = P9_2
+| Name      | Pin   |
+|-----------|-------|
+| OA_PLUS   | P9_0  |
+| OA_MINUS  | P9_1  |
+| OA_OUT    | P9_2  |
 
 Finally, all pins should look like this:
 
@@ -86,17 +98,17 @@ Finally, all pins should look like this:
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
-Build the configuration by pressing Shift + F6 or by pressing Build -> Build Onethinx_Creator. 
+Generate the configuration by hitting the `Generate Application` icon in the toolbar or select `Build` >> `Generate Application`
 
-Now you can go back to the VSC (Visual Studio Code) and do the Clean-Reconfigure.
+Now you can go back to the VS Code and do `Clean-Reconfigure` to include the newest API files in the build.
 
-Firstly, we need to add an extra global variable called **count** just before main.
+Firstly, we need to add an additional global variable called `count` just before main.
 
 ```c
 uint32_t 		count;
 ```
 
-Next, in main function, after the ADC_Start();, we can add all the remaining init of the components (Start), which should look like this:
+Next, in main function, after `ADC_Start();`, we can add all the remaining init of the components (Start), which should look like this:
 
 ```c
 ADC_Start();	
@@ -107,12 +119,12 @@ TCounter_Start();
 
 Next, we need to count the pulses. In code we do this by:
 1. Reset the Timer-Counter block to zero
-2. Start the Counter
-3. Wait for 1 second to count the fequency
-4. Capture the count after 1 second
-5. Wait for 1 ms while that count is being saved
-6. Get the count from the counter
-7. Restore the counter
+1. Start the Counter
+1. Wait for 1 second to count the fequency
+1. Capture the count after 1 second
+1. Wait for 1 ms while that count is being saved
+1. Get the count from the counter
+1. Restore the counter
 
 In code, it looks like this:
 
@@ -126,7 +138,7 @@ count = TCounter_GetCapture();
 TCounter_TriggerReload();	
 ```
 
-Now the count of the frequency should be save in the variable **count**.
+Now the count of the frequency should be saved in the variable `count`.
 
 Your code should look something like this:
 
@@ -170,5 +182,5 @@ int main(void)
 }
 ```
 
-That is it for Part 2. You can find [Part 3: LoRaWAN implementation (and Sleep)](../Part_3_LoRaWAN/) over here.<br><br><br>
+That is it for Part 2. You can find [Part 3: LoRaWAN implementation (and Sleep)](../Part_3_LoRaWAN) over here.<br><br>
 *NOTE: if you are experiencing issues, you may contact us directly at* [our Discord channel](https://discord.gg/CvzZwXDk)<br>
