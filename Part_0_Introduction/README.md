@@ -28,21 +28,21 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
 
 ### 2.1 Sprouty Chip Setup / Configuration Project (uses Windows / PSoC Creator)
 
-1. Download the Sprouty Project [from here](h../assets/Sprouty_StartCode.zip)
+1. Download the Sprouty Project [from here](../assets/Sprouty_StartCode.zip)
 1. After downloading, right click the .zip file and select 'Extract All'. Choose a short folder path and make sure the folder ends with `\Sprouty_StartCode` (e.g. `C:\...\Sprouty_StartCode`)
 1. Open (double click) `Onethinx_Creator.cyprj` inside the project folder `..\Sprouty_StartCode\Onethinx_Creator.cydsn`. PSoC Creator will open<br>
 ![PSoCCreator_WorkspaceExplorer](../assets/img/PSoCCreator_WorkspaceExplorer.png)<br>
 1. Open (double click) `TopDesign.cysch` and view the internal wiring of the PSoC6, causing the LED to flash
 1. Open `Pins` from the Design Wide Resources to configure the LED IO pin
 1. Watch the schematic and find out the right IO pin the LED is connected with<br>
-![LED pin](../assets/LEDpin.png)<br>
+![LED pin](../assets/img/LEDpin.png)<br>
 1. Click the dropdown arrow and select the IO pin we just found for the LED<br>
-![PinConfig](../assets/PinConfig.png)<br>
+![PinConfig](../assets/img/PinConfig.png)<br>
 1. Now the LED is configured for the right IO, the OTX / PSoC6 configuration project is ready to be built
 1. Hit the Build Icon in the toolbar or select `Build >> Build Onethinx_Creator (Shift + F6)`<br>
-![Build](../assets/Build.png)<br>
+![Build](../assets/img/Build.png)<br>
 1. Wait for PSoC Creator to build the configuration project<br>
-![Output](../assets/Output.png)<br>
+![Output](../assets/img/Output.png)<br>
 1. The message `Build Succeeded` will appear when building is ready without issues
 1. Chip configuration is done, PSoC Creator may now be closed.
 
@@ -52,12 +52,12 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
 2. Open the Sprouty folder (not the .zip file)
 <br>
 
-![VScode Open](../assets/SelectingFolder.png)
+![VScode Open](../assets/img/SelectingFolder.png)
 
 <br>
 3. As the project has not run on the PC before, it needs to be Clean-Reconfigured before it can be built. Hit the `Clean-Reconfigure` button from the status bar at the bottom of VS Code<br>
 
-![Clean Build Launch](../assets/Clean_Build_Launch.png)
+![Clean Build Launch](../assets/img/Clean_Build_Launch.png)
 
 <br>
 5. After successfull configuration (the terminal window will show: "Terminal will be reused by tasks, press..." when ready), the project can be Built and Launched from the debugger. 
@@ -65,12 +65,12 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
   Hit the `Build-And-Launch` button from the status bar at the bottom of VS Code
 6. Press Select programmer and choose CMSIS DAP. If you have a different programmer, choose it. If you received your programmer with Sprouty, select CMSIS DAP.
    
-![Select Programmer](../assets/SelectingProgrammer.png)
+![Select Programmer](../assets/img/SelectingProgrammer.png)
 
 6. Cross fingers and hopefully the firmware will be programmed, the project will enter debug mode (yellow bar) and the blue LED will be flashing🎉
  <br>
 
-![Succeeded](../assets/Succeeded.gif)
+![Succeeded](../assets/img/Succeeded.gif)
 
 <br>
 7. Congratulations!<br>🤓
