@@ -93,7 +93,7 @@ Now that you have the hardware configuration done, we just need to connect these
 
 Save the configuration by pressing Ctrl + S or File -> Save.
 
-Build the configuration by hitting the `Generate Application` icon in the toolbar or select `Build` >> `Generate Application`
+Generate the configuration by hitting the `Generate Application` icon in the toolbar or select `Build` >> `Generate Application`
 
 Now, the generated API can be used in Visual Studio Code. Open Visual Studio Code and press `Clean-Reconfigure` in order prepare the build to include the newly generate API files. Navigate to the main.c file and double-click it (main.c is located inside the source folder). This is where you write your code. Before main, we can create some global variables:
 
