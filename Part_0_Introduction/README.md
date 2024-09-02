@@ -1,5 +1,4 @@
 # 🚀 Onethinx Sprouty Workshop 🚀
-
 ## 1 Prerequisites
 ### 1.1 Hardware
 1. Onethinx Sprouty
@@ -15,11 +14,11 @@ PSoC Creator is the official tool from Infineon to do the chip configuration on 
   - Install PDL 3.1.7
   - Run PSoC Creator and set the freshly installed PDL by `TOOLS` -> `OPTIONS` -> `PDL v3 (PSoC6 devices) location:` -> `C:\Program Files (x86)\Cypress\PDL\3.1.7`
 
-### 1.2 Visual Studio Code + OTX Maestro extension installation
+### 1.3 Visual Studio Code + OTX Maestro extension installation
   - Download and install the [Visual Studio Code IDE](https://code.visualstudio.com)
   - Follow the instructions in the [link to install the OTX Maestro Tools & Extension](https://github.com/onethinx/OTX-Maestro/blob/main/README.md#installation)
 
-### 1.3 Sprouty and programming hardware
+### 1.4 Sprouty and programming hardware
   - Make sure the programmer, adapter PCB and cable are connected to the Sprouty as shown:<br><br>
 ![Sprouty, connection](../assets/img/Sprouty_Debugger.jpg)<br>
   - **NOTE**: Do not install the battery when using the debugger.
@@ -68,5 +67,5 @@ To open a folder in Visual Studio Code, click on File in the top menu and select
 6. Cross fingers and hopefully the firmware will be programmed, the project will enter debug mode (yellow bar) and the LED will be flashing 🎉<br>
 ![Succeeded](../assets/img/Succeeded.gif)<br>
 *NOTE: your Sprouty model may differ from the one pictured*<br>
-7. If all built and programmed well, congratulations! 🤓<br> You may head directly to [Part 1: Soil Temperature, Air Temperature, Light intensity and LEDs.](../Part_1_Temperatures_and_Light/) <br><br><br>
+7. If all built and programmed well, congratulations! 🤓<br> You may head directly to [Part 1: Soil Temperature, Air Temperature, Light intensity and LEDs.](../Part_1_Temperatures_and_Light)<br><br>
 *NOTE: if you are experiencing issues, you may contact us directly at* [our Discord channel](https://discord.gg/CvzZwXDk)<br>
