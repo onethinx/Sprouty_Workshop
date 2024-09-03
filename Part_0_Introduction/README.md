@@ -55,7 +55,8 @@ To open a folder in Visual Studio Code, click on File in the top menu and select
 
 1. As the project has not run on the PC before and as new APIs are made by PSoC Creator, the project needs to be Clean-Reconfigured before it can be built. Hit the `Clean-Reconfigure` button from the status bar at the bottom of VS Code<br>
 ![Clean-Reconfigure](../assets/img/Clean-Reconfigure.png)
-
+  *NOTE: if you do not see these buttons, you have either the extension not installed or opened the wrong folder. Make sure the top-level folder you opened contains meson.build.**
+   
 1. Press Select programmer and choose CMSIS DAP. If you have a different programmer, choose it. If you received your programmer with Sprouty, select CMSIS DAP.
 ![Select Programmer](../assets/img/Select_Programmer.png)
 
