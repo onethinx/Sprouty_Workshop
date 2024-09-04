@@ -4,6 +4,8 @@
 
 The LoRaWAN and Sleep part will no longer requre PSoC Creator to setup. The whole chip configuration is done in PSoC Creator.
 
+### 3.1 Setting up LoRaWAN + keys
+
 When you opened the VSCode Sprouty Starting Project, you saw some structures in the beginning:
 
 ```c
@@ -26,10 +28,21 @@ coreConfiguration_t	coreConfig = {
 ```
 
 In this structure you configure the LoRaWAN Stack. If you are new to LoRaWAN, you do not need to modify it, but we encourage you to study it a bit after the workshop has finished.
-
-in the same folder as the main.c, you can see a folder called OnethinxCore. If you expand this folder, you will see a header file called LoRaWAN_keys.h. This is where we save the LoRaWAN keys. You can double click it to modify it.
+In the same folder as the main.c, you can see a folder called OnethinxCore. If you expand this folder, you will see a header file called LoRaWAN_keys.h. This is where we save the LoRaWAN keys. You can double click it to modify it.
 
 ![Part 3 Keys](../assets/img/P3Keys.png)
+
+### 3.2 Adding preprocessor directives, global variable definitions etc.
+
+As the Sprouty LED has a common-anode connected to VDD, the LEDs will turn on when writing the IOs low:
+
+![Part 3 LED1](../assets/img/LED1.png)
+
+To make the code more readable, we will define constants for setting the LEDs OFF / ON
+```c
+#define	LED_OFF	1
+#define	LED_ON	0
+```
 
 In the following structure you can configure the Sleep parameters. For now, you do not need to modify it, but we encourage you to study it a bit after the workshop has finished.
 
@@ -60,14 +73,18 @@ uint32_t 	count;
 uint8_t 	data[4];
 ```
 
-Next, in main, after the component initialisations, we should Init the LoRaWAN stack by giving it the coreConfiguration structure (the LoRaWAN configuration structure above). We whould also Join the LoRaWAN network (The LoRaWAN Join function accepts the type of wait we want to perform, or no wait. In this case, we use M4_WaitDeepSleep which makes your program wait in low power for the LoRaWAN stack to join the network). In case we do not join the network after a given amount of tries, we should do something about it. We will turn on the Red LED and stay in an endless while loop.
+### 3.3 Adding code for LoRaWAN functionality
+
+We will init the LoRaWAN stack by giving it the coreConfiguration structure (the LoRaWAN configuration structure above). After the LoRaWAN stack is initialized, we will try to join the LoRaWAN network (The LoRaWAN Join function accepts the type of wait we want to perform, or no wait. In this case, we use M4_WaitDeepSleep which makes your program wait in low power for the LoRaWAN stack to join the network). In case the stack isn't able to join the network after a given amount of tries, we will notify the user by turning on the Red LED and stay in an endless loop.
+
+Add the following code after the component initializations:
 
 ```c
 coreStatus = LoRaWAN_Init(&coreConfiguration);
 coreStatus = LoRaWAN_Join(M4_WaitDeepSleep);
 if (!coreStatus.mac.isJoined)
 {
-	Cy_GPIO_Write(LED_R_PORT, LED_R_NUM, 1);
+	Cy_GPIO_Write(LED_R_PORT, LED_R_NUM, LED_ON);
 	while(1){}
 }
 ```
@@ -105,8 +122,9 @@ LoRaWAN_Sleep(&sleepConfig);
 Also, in order to have an idea when code is being executed and when it is sleeping, we can turn on the Green LED on before checking the ADC and turn it off after we finish counting.
 
 ```c
-Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0); // Turn on the Green LED
-Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1); // Turn off the Green LED
+Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, LED_ON);
+...
+Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, LED_OFF);
 ```
 
 You can now **build** and **launch** your code.
@@ -126,8 +144,8 @@ coreConfiguration_t	coreConfig = {
 	.Join.DataRate =		DR_AUTO,			
 	.Join.Power =			PWR_MAX,			
 	.Join.MAXTries = 		5,					
-	.Join.SubBand_1st =     	EU_SUB_BANDS_DEFAULT
-	.Join.SubBand_2nd =     	EU_SUB_BANDS_DEFAULT
+	.Join.SubBand_1st =     	EU_SUB_BANDS_DEFAULT,
+	.Join.SubBand_2nd =     	EU_SUB_BANDS_DEFAULT,
 	.TX.Confirmed = 		false,				
 	.TX.DataRate = 			DR_ADR,				
 	.TX.Power = 			PWR_ADR,			
@@ -158,9 +176,9 @@ int main(void)
 	CyDelay(2000);
 	__enable_irq();
 
-	Cy_GPIO_Write(LED_R_PORT, LED_R_NUM, 1);		
-	Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1);		
-	Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, 1);		
+	Cy_GPIO_Write(LED_R_PORT, LED_R_NUM, LED_OFF);
+	Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, LED_OFF);
+	Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, LED_OFF);
 
 	Opamp_Start();									
 	LPComp_Start();									
@@ -172,15 +190,13 @@ int main(void)
 
 	if (!coreStatus.mac.isJoined)							
 	{
-		Cy_GPIO_Write(LED_R_PORT, LED_R_NUM, 1);
+		Cy_GPIO_Write(LED_R_PORT, LED_R_NUM, LED_ON);
 	 	while(1){}
 	}
 
 	for(;;)
 	{
-		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);
-
-		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 0);				
+		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, LED_ON);				
 		Cy_GPIO_Write(SPWR_PORT, SPWR_NUM, 1);					
 		CyDelay(1);												
 		ADC_StartConvert();										
@@ -197,7 +213,8 @@ int main(void)
 		CyDelay(1);												
 		count = TCounter_GetCapture();							
 		TCounter_TriggerReload();								
-		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1);				
+		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, LED_OFF);				
+		Cy_GPIO_Write(LED_B_PORT, LED_B_NUM, LED_ON);				
 
 		data[0] = (uint8_t)(count/1000);						 
 		data[1] = (uint8_t)tempSoil+40;							
@@ -205,7 +222,7 @@ int main(void)
 		data[3] = (uint8_t)(valueLight/20);						
 		
 		LoRaWAN_Send(&data, 4, M4_WaitDeepSleep);			
-		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, 1);
+		Cy_GPIO_Write(LED_G_PORT, LED_G_NUM, LED_OFF);
 		LoRaWAN_Sleep(&sleepConfig);							
 	}
 }
