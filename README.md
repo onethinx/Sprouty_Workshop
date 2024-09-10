@@ -12,5 +12,5 @@
 
 ---
 ### Supplementary files
-- [Sprouty Datasheet](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/Sprouty_Datasheet_Rev_A.pdf)
+- [Sprouty Datasheet](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/Sprouty_Datasheet_Rev_B.pdf)
 - [Sprouty StartCode](https://github.com/onethinx/Sprouty_Workshop/raw/main/assets/Sprouty_StartCode.zip)
