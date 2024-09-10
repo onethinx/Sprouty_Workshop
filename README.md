@@ -1,5 +1,5 @@
 # 🚀 Onethinx Sprouty Workshop 🚀
-![Sprouty parts needed](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Sprouty_transparent_450px.png?raw=true)
+![Sprouty parts needed](https://github.com/onethinx/Sprouty_Workshop/blob/main/assets/img/Sprouty_transparent_451px.png?raw=true)
 ---
 ### Here are steps that we will use in this workshop. They also contain code and are here to copy if you need them.
 | Part | Description                                                                                     |
